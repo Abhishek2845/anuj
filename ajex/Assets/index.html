@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ajex</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./Assites/style.css">
+    <script src="./Assites/style.js"></script>
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="payloadbtn()" id="payload">Payloads</a>
+        <a href="#" >Rocket</a>
+        <a href="#">Missions</a>
+        <a href="#">Launch Pads</a>
+    </div>
+
+    <div id="main">
+
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <h1>Payloads</h1>
+        <p>Current orbital data is pulled from SpaceTrack on an hourly basis.</p>
+
+
+        <div id="rocket-data" style="display:none"></div>
+
+        <div id="rocket-details">
+            <div class="flight_id">
+                <h3 class="title">
+
+            </div>
+            <p class="nationality"></p>
+            <p class="launch_date_utc"></p>
+            <p class="norad_id"></p>
+            <p class="payload_type"></p>
+            <p class="norad_id"></p>
+        </div>
+        
+
+    </div>
+
+    
+</body>
+
+</html>

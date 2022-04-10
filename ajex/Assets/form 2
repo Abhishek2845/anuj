@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+ <style>
+  
+  #rocket-data{
+      display:flex;
+      justify-content: space-between;
+  }
+
+
+  .card{
+
+     flex-wrap: wrap;
+     width: 20%;
+     border: 1px solid black;
+     
+
+  }
+
+  .image-path{
+      width: 100px;
+      height: 100px;
+  }
+  
+
+
+ </style>
+
+
+   <div id="rocket-data"> 
+
+
+
+   </div>
+
+   <div id="rocket-details" style="display:none">
+         <div class="details">
+            <h3 class="title"></div>
+            <img class="detail-img"  scr=""/>
+            <p class="cost_per_launch"></p>
+             <p class="country"></p>
+        </div>
+
+
+   </div>
+
+
+  
+    <script>
+
+     $(document).ready(function(){
+
+        $.ajax({
+           url:"https://api.spacexdata.com/v3/rockets?limit=20&offset=0",
+           type:"get",
+           success:function(response){
+               console.log("response",response);
+
+           let str ="";
+            response.map(item=>{
+
+                     str+=`<div class="card">
+                               <h3>${item.rocket_name}</h3>
+                              <img class="image-path" src="${item.flickr_images[0]}">
+                               <button id="rocket_details_${item.rocket_id}" data-id="${item.rocket_id}">Details</button>
+                              </div>`;
+
+                          
+
+
+            });
+
+            $("#rocket-data").html(str); 
+               
+           }
+        })
+
+
+     });
+
+
+     $(document).on("click","button[id^=rocket_details_]",function(){
+
+
+       let id=$(this).attr("data-id");
+
+       $.ajax({
+
+              url:"https://api.spacexdata.com/v3/rockets/"+id,
+              type:"get",
+              success:function(response){
+
+                  console.log("response2",response);
+
+                  $(".title").text(response.rocket_name)
+                  $(".detail-img").attr("src",response.flickr_images[1]);
+                  $(".cost_per_launch").text(response.cost_per_launch);
+                  $(".country").text(response.country);
+                  $("#rocket-details").show();
+              }
+
+            
+       })
+
+       
+
+
+     })
+
+    </script>
+</body>
+
+</html>

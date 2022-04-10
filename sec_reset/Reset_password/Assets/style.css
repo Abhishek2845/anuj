@@ -1,0 +1,21 @@
+.square-box{
+    max-width: 600px;
+    min-width: 600px;
+    border: 1px solid;
+}
+.navbtn{
+    margin-right: 10px;
+    background-color: transparent;
+    border-color: white;
+ }
+ .navbtn:hover{
+     background-color: green;
+     color: black;
+     box-shadow: 0px 5px 22px 0px lightgrey;
+ }
+ .navbar{
+     margin-bottom: 50px;
+ }
+ .img{
+    width : 200px;
+}
